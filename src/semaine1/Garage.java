@@ -14,7 +14,8 @@ public class Garage {
 
 
         //TODO1 création des tableaux
-        stationnements = new Automobile[nombrePlacesStationnement + 2];
+        garages = new Automobile[2];
+        stationnements = new Automobile[nombrePlacesStationnement];
     }
 
     /**
@@ -60,7 +61,13 @@ public class Garage {
      */
     private int trouveIndexPlaceLibre() {
         //TODO 3
-        return -1;
+        int result = -1;
+        for (int i = 0; i < stationnements.length; i++) {
+            if (stationnements[i] != null) {
+                result = i;
+            }
+        }
+        return result;
     }
 
     /**
@@ -71,8 +78,8 @@ public class Garage {
     public int trouvePlace() {
     //TODO  5
         int result = -1;
-        for (int i = 0; i < stationnements.length; i++) {
-            if (stationnements[i] != null) {
+        for (int i = 0; i < garages.length; i++) {
+            if (garages[i] != null) {
                 result = i;
             }
         }
@@ -93,10 +100,9 @@ public class Garage {
         assert indexGarage >= 0 : "place négative";
         assert indexGarage < garages.length : "place inexistante";
 
-        boolean estPlace = false;
-        for (int i = 0; i < stationnements.length; i++) {
+        for (int i = 0; i < garages.length; i++) {
             if (i == placeGarage){
-                estPlace = stationne(vehiculeRepare);
+                garages[i] = vehiculeRepare;
 
             }
 
@@ -104,12 +110,17 @@ public class Garage {
 
 
         //TODO 7
-        return estPlace;
+        return false;
     }
 
     private int chercheVehiculeStationnement(Automobile vehiculeRepare) {
         assert vehiculeRepare != null : "Null param";
+        for (int i = 0; i < stationnements.length; i++) {
+            if (stationnements[i] == vehiculeRepare){
+                return i;
+            }
 
+        }
 
 
         //TODO 6
