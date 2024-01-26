@@ -104,17 +104,28 @@ public class Garage {
         assert indexGarage >= 0 : "place négative";
         assert indexGarage < garages.length : "place inexistante";
 
-        for (int i = 0; i < garages.length; i++) {
-            if (i == placeGarage){
-                garages[i] = vehiculeRepare;
+        boolean validation = false;
 
+        for (int i = 0; i < stationnements.length; i++) {
+            if (vehiculeRepare == stationnements[i]){
+                stationnements[i] = null;
+            }
+
+        }
+
+        for (int i = 0; i < garages.length; i++) {
+            if (i == indexGarage){
+                garages[i] = vehiculeRepare;
+                validation = true;
             }
 
         }
 
 
+
+
         //TODO 7
-        return false;
+        return validation;
     }
 
     private int chercheVehiculeStationnement(Automobile vehiculeRepare) {
