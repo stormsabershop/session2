@@ -1,8 +1,11 @@
 package semaine1;
 
+
 public class Garage {
     private Automobile[] stationnements;
     private Automobile[] garages;
+
+    public int prixDeLaFacture = 0;
 
     /**
      * crée un Garage avec le nombre de places de stationnement demandé et toujours 2 places de garage pour les réparations.
@@ -116,16 +119,17 @@ public class Garage {
 
     private int chercheVehiculeStationnement(Automobile vehiculeRepare) {
         assert vehiculeRepare != null : "Null param";
+        int stationnement = 0;
         for (int i = 0; i < stationnements.length; i++) {
             if (stationnements[i] == vehiculeRepare){
-                return i;
+                stationnement = i;
             }
 
         }
 
 
         //TODO 6
-        return -1;
+        return stationnement;
     }
 
     /**
@@ -138,16 +142,32 @@ public class Garage {
     public boolean sortVehicule(int placeGarage, int placeStationement) {
         int indexGarage = placeGarage - 1;
         int indexStationnement = placeStationement - 1;
+        Automobile voiture = null;
+        boolean verification = false;
 
         assert indexGarage >= 0 : "place garage négative";
         assert indexGarage < garages.length : "place garage inexistante";
         assert indexStationnement >= 0 : "place stationnement négative";
         assert indexStationnement < stationnements.length : "place stationnement inexistante";
+        for (int i = 0; i < garages.length; i++) {
+            if (i == placeGarage && garages[i] != null){
+                voiture = garages[i];
+                garages[i] = null;
+            }
+
+        }
+        for (int i = 0; i < stationnements.length; i++) {
+            if (i == placeStationement && stationnements[i] == null && voiture != null){
+                stationnements[i] = voiture;
+                verification = true;
+            }
+
+        }
 
 
 
         //TODO 8
-        return false;
+        return verification;
     }
 
     /**
@@ -158,9 +178,31 @@ public class Garage {
      */
     public Automobile faitDepartVehicule(Automobile auto) {
         assert auto != null: "parametre null";
+        Automobile vehiculeTrouve = null;
+        for (int i = 0; i < stationnements.length; i++) {
+            if (stationnements[i] == auto){
+                stationnements[i] = null;
+                vehiculeTrouve = auto;
+            }
 
+        }
         //TODO 9
-        return null;
+        return vehiculeTrouve;
+    }
+
+    public Automobile.Etat reparer(Automobile.Etat etatDeRaparation) {
+        switch (etatDeRaparation){
+            case BRISE -> {
+                etatDeRaparation = Automobile.Etat.REPARE;
+                prixDeLaFacture += 1000;
+
+            }
+            case TRES_BRISE -> {
+                etatDeRaparation = Automobile.Etat.REPARE;
+                prixDeLaFacture += 2000;
+            }
+        }
+        return etatDeRaparation;
     }
 
     /**
@@ -169,6 +211,38 @@ public class Garage {
      */
     public void repare() {
         //TODO 10
+        for (int i = 0; i < garages.length; i++) {
+            if (garages[i] != null){
+                prixDeLaFacture = 0;
+                Automobile.Etat Carosserie =  garages[i].getEtatCarosserie();
+                Automobile.Etat Moteur =  garages[i].getEtatMoteur();
+                Automobile.Etat Transmission = garages[i].getEtatTransmission();
+
+                garages[i].setEtatTransmission(reparer(Transmission));
+                garages[i].setEtatMoteur(reparer(Moteur));
+                garages[i].setEtatCarosserie(reparer(Carosserie));
+                System.out.println("La facture s'élève à " + prixDeLaFacture + " $ Cad");
+
+
+                /*
+
+                if (carosserie != Automobile.Etat.NEUF && carosserie != Automobile.Etat.REPARE){
+
+                    garages[i].setEtatCarosserie(Automobile.Etat.REPARE);
+                }
+                if (Moteur != Automobile.Etat.NEUF && Moteur != Automobile.Etat.REPARE){
+                    garages[i].setEtatMoteur(Automobile.Etat.REPARE);
+                }
+                if (Transmission != Automobile.Etat.NEUF && Transmission != Automobile.Etat.REPARE){
+                    garages[i].setEtatTransmission(Automobile.Etat.REPARE);
+                }
+
+                 */
+
+
+            }
+
+        }
 
 
     }
