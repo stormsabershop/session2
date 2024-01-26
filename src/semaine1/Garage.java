@@ -65,6 +65,7 @@ public class Garage {
         for (int i = 0; i < stationnements.length; i++) {
             if (stationnements[i] != null) {
                 result = i;
+
             }
         }
         return result;
