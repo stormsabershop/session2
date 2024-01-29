@@ -1,18 +1,15 @@
-package semaine2.formatif1.exercice1;
+package semaine2.formatif1.exercice1.delegation;
 
 public class ProduitAvecTip {
-    public final static double TAUX_TAXE = 0.15;
 
-    public double calculeTaxe(double montant) {
-        return montant * TAUX_TAXE;
-    }
+    private CalculateurDeTaxe calculateurDeTaxe = new CalculateurDeTaxe();
 
     public double calculeTip(double montant, double tauxTip) {
         return montant * tauxTip;
     }
 
     public double calculCout(double montant, double tauxTip) {
-        return montant + calculeTip(montant, tauxTip) + calculeTaxe(montant);
+        return montant + calculeTip(montant, tauxTip) + calculateurDeTaxe.calculeTaxe(montant);
     }
 
     public static void main(String[] args) {

@@ -1,11 +1,6 @@
-package semaine2.formatif1.exercice1;
+package semaine2.formatif1.exercice1.heritage;
 
-public class ProduitAvecTip {
-    public final static double TAUX_TAXE = 0.15;
-
-    public double calculeTaxe(double montant) {
-        return montant * TAUX_TAXE;
-    }
+public class ProduitAvecTip extends ProduitTaxe {
 
     public double calculeTip(double montant, double tauxTip) {
         return montant * tauxTip;

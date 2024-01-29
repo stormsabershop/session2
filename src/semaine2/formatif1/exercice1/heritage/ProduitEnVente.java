@@ -1,12 +1,6 @@
-package semaine2.formatif1.exercice1;
+package semaine2.formatif1.exercice1.heritage;
 
-public class ProduitEnVente {
-    public final static double TAUX_TAXE = 0.15;
-
-    public double calculeTaxe(double montant) {
-        return montant * TAUX_TAXE;
-
-    }
+public class ProduitEnVente extends ProduitTaxe {
 
     public double calculeRabais(double montant, double rabais) {
         return montant - rabais;
