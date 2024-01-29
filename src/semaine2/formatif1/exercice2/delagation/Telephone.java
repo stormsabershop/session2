@@ -2,18 +2,12 @@ package semaine2.formatif1.exercice2.delagation;
 
 
 public class Telephone {
-    private double energie = 0;
-    public final static double TAUX_CHARGE = 30;
-    public final static double TAUX_DECHARGE = 1;
-    public final static double MAX_ENERGIE = 5000;
+
+    private Batterie batterie = new Batterie();
 
     public Telephone(double energie) {
 
-        this.energie = energie;
-    }
-
-    public double getEnergie() {
-        return energie;
+        batterie.setEnergie(energie);
     }
 
     /**
@@ -22,8 +16,8 @@ public class Telephone {
      * @param temps en seconde
      */
     public void charge(double temps) {
-        double ajoutEnergie = temps * TAUX_CHARGE;
-        energie = Math.min(MAX_ENERGIE, energie + ajoutEnergie);
+        double ajoutEnergie = temps * Batterie.TAUX_CHARGE;
+        batterie.setEnergie(Math.min(Batterie.MAX_ENERGIE, batterie.getEnergie() + ajoutEnergie));
     }
 
     /**
@@ -33,7 +27,7 @@ public class Telephone {
      * @param duree  durée de l'appel
      */
     private void appelle(String numero, double duree) {
-        energie = Math.max(0, energie - duree * TAUX_DECHARGE);
+        batterie.setEnergie(Math.max(0, batterie.getEnergie() - duree * Batterie.TAUX_DECHARGE));
         System.out.println("appelle le numero " + numero + " pendant " + duree + " sec");
     }
 
@@ -41,6 +35,6 @@ public class Telephone {
         Telephone tel = new Telephone(0);
         tel.charge(80);
         tel.appelle("4432424", 15);
-        System.out.println("il reste " + tel.getEnergie() + " dans le téléphone");
+        System.out.println("il reste " + tel.batterie.getEnergie() + " dans le téléphone");
     }
 }
