@@ -5,7 +5,7 @@ public class Garage {
     private Automobile[] stationnements;
     private Automobile[] garages;
 
-    public int prixDeLaFacture = 0;
+    private int prixDeLaFacture = 0;
 
     /**
      * crée un Garage avec le nombre de places de stationnement demandé et toujours 2 places de garage pour les réparations.

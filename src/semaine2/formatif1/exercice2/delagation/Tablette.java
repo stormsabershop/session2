@@ -1,4 +1,4 @@
-package semaine2.formatif1.exercice2;
+package semaine2.formatif1.exercice2.delagation;
 
 public class Tablette {
     private double energie;

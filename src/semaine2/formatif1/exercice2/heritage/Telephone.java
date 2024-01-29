@@ -1,19 +1,10 @@
-package semaine2.formatif1.exercice2;
+package semaine2.formatif1.exercice2.heritage;
 
 
-public class Telephone {
-    private double energie = 0;
-    public final static double TAUX_CHARGE = 30;
-    public final static double TAUX_DECHARGE = 1;
-    public final static double MAX_ENERGIE = 5000;
+public class Telephone extends Appareil {
 
     public Telephone(double energie) {
-
-        this.energie = energie;
-    }
-
-    public double getEnergie() {
-        return energie;
+        super(energie);
     }
 
     /**
@@ -21,10 +12,7 @@ public class Telephone {
      *
      * @param temps en seconde
      */
-    public void charge(double temps) {
-        double ajoutEnergie = temps * TAUX_CHARGE;
-        energie = Math.min(MAX_ENERGIE, energie + ajoutEnergie);
-    }
+
 
     /**
      * Appelle le numero reçu pendant la duree demandée
@@ -33,7 +21,7 @@ public class Telephone {
      * @param duree  durée de l'appel
      */
     private void appelle(String numero, double duree) {
-        energie = Math.max(0, energie - duree * TAUX_DECHARGE);
+        setEnergie(Math.max(0, getEnergie() - duree * TAUX_DECHARGE));
         System.out.println("appelle le numero " + numero + " pendant " + duree + " sec");
     }
 

@@ -17,4 +17,8 @@ public class ProduitAvecTip {
         double cout = produit.calculCout(25, 0.15);
         System.out.println("Le cout est de " + cout + " $");
     }
+
+
+    
+
 }

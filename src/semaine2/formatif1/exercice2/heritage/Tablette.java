@@ -1,17 +1,9 @@
-package semaine2.formatif1.exercice2;
+package semaine2.formatif1.exercice2.heritage;
 
-public class Tablette {
-    private double energie;
-    public final static double TAUX_CHARGE = 30;
-    public final static double MAX_ENERGIE = 5000;
-
-    public double getEnergie() {
-        return energie;
-    }
+public class Tablette extends Appareil{
 
     public Tablette(double energie) {
-
-        this.energie = energie;
+        super(energie);
     }
 
     /**
@@ -19,10 +11,6 @@ public class Tablette {
      *
      * @param temps en seconde
      */
-    public void charge(double temps) {
-        double ajoutEnergie = temps * TAUX_CHARGE;
-        energie = Math.min(MAX_ENERGIE, energie + ajoutEnergie);
-    }
 
     /**
      * Joue à un jeu avec une intensité fournie pendant une certaine durée
@@ -31,7 +19,7 @@ public class Tablette {
      * @param duree     temps de jeu
      */
     private void joue(double intensite, double duree) {
-        energie = Math.max(0, energie - duree * intensite);
+        setEnergie(Math.max(0, getEnergie() - duree * intensite));
         System.out.println("joue à un jeux d'intensité " + intensite + " pendant " + duree + " sec");
     }
 
