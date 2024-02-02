@@ -1,9 +1,6 @@
-package formatif1.exercice3;
+package semaine2.formatif1.exercice3;
 
-public class Saumon {
-    private double taille;
-    private String nom;
-    private boolean estVertebre;
+public class Saumon extends Animal {
     private boolean avecSangChaud;
     private Milieu milieu;
     private boolean estAquatique;
@@ -11,11 +8,9 @@ public class Saumon {
     public enum Milieu {EAU_SALEE, EAU_DOUCE, MIXTE}
 
     public Saumon(double taille) {
-        nom = "saumon";
-        estVertebre = true;
+        super(taille, "saumon", true);
         avecSangChaud = false;
         milieu = Milieu.MIXTE;
-        this.taille = taille;
         estAquatique = true;
     }
 

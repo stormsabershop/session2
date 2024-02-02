@@ -1,18 +1,13 @@
-package formatif1.exercice3;
+package semaine2.formatif1.exercice3;
 
-public class Ours {
-    private double taille;
-    private String nom;
-    private boolean estVertebre;
+public class Ours extends Animal {
     private boolean avecSangChaud;
     private boolean estNocturne;
     private boolean estAquatique;
 
     public Ours(double taille) {
-        nom = "ours";
-        estVertebre = true;
+        super(taille, "ours", true);
         avecSangChaud = true;
-        this.taille = taille;
         estNocturne = false;
         estAquatique = false;
     }

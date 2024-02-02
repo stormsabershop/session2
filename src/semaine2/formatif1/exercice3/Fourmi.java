@@ -1,16 +1,11 @@
-package formatif1.exercice3;
+package semaine2.formatif1.exercice3;
 
-public class Fourmi {
-    private double taille;
-    private String nom;
-    private boolean estVertebre;
+public class Fourmi extends Animal {
     private int nombrePairDePattes;
-
     public Fourmi(double taille) {
-        nom = "fourmi";
-        estVertebre = false;
+        super(taille, "fourmi", false);
         nombrePairDePattes = 3;
-        this.taille = taille;
+
     }
 
     public String decritFourmi() {

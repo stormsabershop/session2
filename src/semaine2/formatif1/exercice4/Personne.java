@@ -1,4 +1,4 @@
-package formatif1.exercice4;
+package semaine2.formatif1.exercice4;
 
 import java.time.LocalDate;
 import java.util.Objects;

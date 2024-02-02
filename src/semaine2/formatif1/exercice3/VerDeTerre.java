@@ -1,17 +1,11 @@
-package formatif1.exercice3;
+package semaine2.formatif1.exercice3;
 
-public class VerDeTerre {
-
-    private double taille;
-    private String nom;
-    private boolean estVertebre;
+public class VerDeTerre extends Animal {
     private int nombrePairDePattes;
 
     public VerDeTerre(double taille) {
-        nom = "ver de terre";
-        estVertebre = false;
+        super(taille, "ver de terre", false);
         nombrePairDePattes = 0;
-        this.taille = taille;
     }
 
     public String decritVerDeTerre(){
