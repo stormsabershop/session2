@@ -1,15 +1,15 @@
 package semaine2.formatif2.exercice1;
 
-public class Bolide {
+public class Bolide extends Vehicule {
     private double vitesse;
-    private double position = 0;
+
 
     public Bolide(double vitesse) {
+        super(0);
         assert vitesse < 5 : "vitesse trop grande";
         assert vitesse > 0 : "vitesse nulle ou négative";
-
         this.vitesse = vitesse;
-        this.position = 0;
+
     }
 
     public double getVitesse() {
@@ -24,15 +24,9 @@ public class Bolide {
         this.vitesse = vitesse;
     }
 
-    public double getPosition() {
-        return position;
-    }
-
-    public void setPosition(double position) {
-        this.position = position;
-    }
 
     public double avance() {
-        return position += vitesse;
+        double pos = getPosition();
+        return pos += vitesse;
     }
 }

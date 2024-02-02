@@ -1,18 +1,19 @@
 package semaine2.formatif2.exercice1;
 
-public class Auto {
-    private double position = 0;
+public class Auto extends Vehicule {
+
     public final static double DEPLACEMENT = 3;
 
+    public Auto(double position) {
+        super(position);
+    }
+
+    public Auto(){
+        super(0);
+    }
+
     public double avance() {
-        return position += DEPLACEMENT;
-    }
-
-    public double getPosition() {
-        return position;
-    }
-
-    public void setPosition(double position) {
-        this.position = position;
+        double pos = getPosition();
+        return pos += DEPLACEMENT;
     }
 }

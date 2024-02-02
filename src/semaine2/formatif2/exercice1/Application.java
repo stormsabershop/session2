@@ -20,15 +20,26 @@ public class Application {
         // On peut les mettre dans un tableau
         System.out.println("\n\nAvec instanceof");
         Object[] vehicules = new Object[5];
+        Vehicule[] vehiculesPolymorphiques = new Vehicule[6];
+
+        vehiculesPolymorphiques[0] = new Auto();
+        vehiculesPolymorphiques[1] = new Bolide(2);
+        vehiculesPolymorphiques[2] = new Bolide(3);
+        vehiculesPolymorphiques[3] = new Bolide(4);
+        vehiculesPolymorphiques[4] = new Auto();
+        vehiculesPolymorphiques[5] = new Bolide(6);
+
+
 
         vehicules[0] = new Auto();
         vehicules[1] = new Bolide(2);
         vehicules[2] = new Auto();
         vehicules[3] = new Bolide(3);
 
-        //    for(int i = 0; i < vehicules.length; i++){
-        //          vehicules[i].avance();
-        // }
+        for (int i = 0; i < vehiculesPolymorphiques.length; i++) {
+            vehiculesPolymorphiques[i].setPosition(vehiculesPolymorphiques[i].avance());
+            System.out.println("le vehicule par polymorphisme est rendu a " + vehiculesPolymorphiques[i].getPosition());
+        }
 
         //******************************************************************************
         //Notez que c'est une TRÈS MAUVAISE solution, il faut l'éviter à tout prix!!!!!
@@ -38,12 +49,12 @@ public class Application {
             Object vehicule = vehicules[i];
             if (vehicule instanceof Auto) {
                 Auto autoCourante = (Auto) vehicule;
-                autoCourante.avance();
+                autoCourante.setPosition(autoCourante.avance());
                 System.out.println("le vehicule/auto avec instanceof est rendu à " + autoCourante.getPosition());
             }
             if (vehicule instanceof Bolide) {
                 Bolide bolideCourant = (Bolide) vehicule;
-                bolideCourant.avance();
+                bolideCourant.setPosition(bolideCourant.avance());
                 System.out.println("le vehicule/bolide avec instanceof est rendu à " + bolideCourant.getPosition());
             }
         }
