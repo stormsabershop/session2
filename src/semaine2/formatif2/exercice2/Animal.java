@@ -10,4 +10,8 @@ public class Animal {
         this.nom = nom;
         this.estVertebre = estVertebre;
     }
+
+    public String decritAnimal() {
+        return "marche pas";
+    }
 }

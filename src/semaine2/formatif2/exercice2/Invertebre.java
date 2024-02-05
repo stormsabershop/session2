@@ -7,4 +7,8 @@ public class Invertebre extends Animal {
         super(taille, nom, false);
         this.nombrePairDePattes = nombrePairDePattes;
     }
+
+    public String decritAnimal() {
+        return "marche pas";
+    }
 }

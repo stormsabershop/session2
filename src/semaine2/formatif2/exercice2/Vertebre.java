@@ -8,4 +8,8 @@ public class Vertebre extends Animal {
 
         this.estAquatique = estAquatique;
     }
+
+    public String decritAnimal() {
+        return "marche pas";
+    }
 }
